@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+assignment 8 - hobbies and Preferences
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+    <h1> {{ name | default('Unknown', true) | upper()}} Hobbies & Preferences in sport</h1>
+    <h2>Sport preferences: </h2>
+    <ol>
+        {% for sportType in sports%}
+            <li> {{ sportType}}</li>
+        {% endfor %}
+    </ol>
+    <h2>Hobbies: </h2>
+    <ul>
+        {% for hobby in hobbies%}
+            <li> {{ hobby}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

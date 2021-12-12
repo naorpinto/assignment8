@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<h1>Welcome!!</h1>
+    {% if name %}
+        <h2> <a href="https://www.linkedin.com/feed/"> A little more about me</a></h2>
+    {% else %}
+        <h2> You need to register on my website in order see more details about me</h2>
+    {% endif %}
+
+{% endblock %}

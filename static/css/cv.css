@@ -1,0 +1,238 @@
+#GridContainer{
+    display: grid;
+    grid-template-areas:
+    'header header header'
+    'subtitle1 item1 item1'
+    'subtitle2 item2 item2'
+    'subtitle3 item3 item3'
+    'subtitle4 col1 item4'
+    'subtitle5 item5 item5'
+    'subtitle6 col2 item6'
+    'subtitle7 item7 item7'
+    ;
+
+}
+
+body{
+    background-color:white;
+    animation-name: changeBackgroundColor;
+    animation-duration: 5s;
+    animation-iteration-count:20s;
+}
+
+@keyframes changeBackgroundColor{
+    0% { background-color: white}
+    25% { background-color:aqua}
+    50% { background-color:white}
+    75% { background-color: aqua}
+    100% { background-color: white}
+}
+
+button{
+    height: 10%;
+    font-size: 20px;
+    background-color: rgb(39, 95, 160);
+    animation-name: blink;
+    animation-duration: 10s;
+    animation-iteration-count: 10s;
+}
+
+@keyframes blink{
+    0% { background-color: rgb(39, 95, 160); border-radius: 0%;}
+    25% { background-color:white; border-radius: 50%}
+    50% { background-color:rgb(39, 95, 160);border-radius: 100%}
+    75% { background-color: white;border-radius: 50%}
+    100% { background-color: rgb(39, 95, 160);border-radius: 0%}
+}
+
+@media only screen and (max-width: 600px) {
+    body{
+        border-style: solid;
+        border-color: black
+    }
+}
+
+#header{
+    grid-area:header;
+    background-color: rgb(139, 198, 247);
+    text-align: center;
+    width: 100%;
+    height: 20vh;
+}
+
+#subtitle1{
+    grid-area: subtitle1;
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+}
+
+#item1{
+    grid-area: item1;
+    width: 100%;
+    height: 15vh;
+}
+#subtitle2{
+    grid-area: subtitle2;
+    background-color:rgb(139, 198, 247) ;
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+}
+
+#item2{
+    grid-area: item2;
+    background-color:rgb(139, 198, 247) ;
+    width: 100%;
+    height: 15vh;
+}
+
+#subtitle3{
+    grid-area: subtitle3;
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+}
+
+#item3{
+    grid-area: item3;
+    width: 100%;
+    height: 15vh;
+}
+
+#subtitle4{
+    grid-area: subtitle4;
+    background-color:rgb(139, 198, 247) ;
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+}
+
+#item4{
+    grid-area: item4;
+    background-color:rgb(139, 198, 247) ;
+    width: 100%;
+    height: 15vh;
+}
+
+#col1{
+    grid-area: col1;
+    background-color:rgb(139, 198, 247) ;
+    width: 100%;
+    height: 15vh;
+}
+
+#subtitle5{
+    grid-area: subtitle5;
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+}
+
+#item5{
+    grid-area: item5;
+    width: 100%;
+    height: 15vh;
+}
+
+#subtitle6{
+    grid-area: subtitle6;
+    background-color:rgb(139, 198, 247) ;
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+}
+
+#item6{
+    grid-area: item6;
+    background-color:rgb(139, 198, 247) ;
+    width: 100%;
+    height: 15vh;
+}
+
+#col2{
+    grid-area: col2;
+    background-color:rgb(139, 198, 247) ;
+    width: 100%;
+    height: 15vh;
+}
+
+#subtitle7{
+    grid-area: subtitle7;
+    text-align: center;
+    width: 100%;
+    height: 15vh;
+}
+
+#item7{
+    grid-area: item7;
+    width: 100%;
+    height: 15vh;
+}
+/* cv2 css*/
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  input[type=email], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  input[type=tel], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  input[type=number], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }

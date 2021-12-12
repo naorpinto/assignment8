@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    {% block content %}
+        <h5> Message: I build all by using the block function</h5>
+    {% endblock %}
+</body>
+</html>

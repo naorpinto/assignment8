@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+assignment 8 - skills
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+     <h1> {{ name | default('Unknown', true) | upper()}} Skills</h1>
+    <h2>Technical skills: </h2>
+        <ul>
+        {% for skill in Technical_skills %}
+            <li> {{ skill}}</li>
+        {% endfor %}
+        </ul>
+{% endblock %}
