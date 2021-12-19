@@ -7,6 +7,9 @@
 <body>
     {% include 'header.html' %}
     {% block content %}
+        {% if session.username%}
+        <h2> Welcome Back,{{session.nickname}}</h2>
+        {% endif %}
         <h5> Message: I build all by using the block function</h5>
     {% endblock %}
 </body>

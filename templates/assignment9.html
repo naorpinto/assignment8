@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+assignment 9
+{% endblock %}
+
+{% block content %}
+
+    <h2>Search</h2>
+    <form action="/assignment9" method="GET">
+       Username Search:<input name="search" type="text"> <br> <br>
+    <input type="submit" value="Submit">
+    </form>
+
+    {% if search_user %}
+        {% for u in users %}
+            {% if search_user == users[u]['name'] %}
+                {{ u }} : {{ users[u]['name'] }}, {{ users[u]['email'] }}, {{ users[u]['nickname'] }}
+
+            {% elif search_user == users[u]['email'] %}
+                {{ u }} : {{ users[u]['name'] }}, {{ users[u]['email'] }}, {{ users[u]['nickname'] }}
+
+            {% elif search_user == users[u]['nickname'] %}
+                {{ u }} : {{ users[u]['name'] }}, {{ users[u]['email'] }}, {{ users[u]['nickname'] }}
+
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% for user in users %}
+            {{ user }} : {{ users[user]['name'] }},{{ users[user]['email'] }}, {{ users[user]['nickname'] }} <br>
+        {% endfor %}
+    {% endif %}
+
+    {% if session.username %}
+           <h2> Welcome Back,{{session.nickname}}</h2>
+        <button> <a href="/logout"> Log Out</a>
+    {% else %}
+            <h2>Registration</h2>
+            <form action="/assignment9" method="POST">
+                Username:<input name="username" type="text" required><br> <br>
+                User Email: <input name="user_email" type="email" required><br> <br>
+                 Password: <input name="password" type="password" required><br> <br>
+                 User Nickname: <input name="nickname" type="text" ><br> <br>
+                 <input type="submit" value="Submit">
+             </form>
+    {% endif %}
+
+
+{% endblock %}

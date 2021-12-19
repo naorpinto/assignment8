@@ -10,6 +10,9 @@
 </head>
 <body>
 {% include 'header.html' %}
+        {% if session.username%}
+          <h2> Welcome Back,{{session.nickname}}</h2>
+        {% endif %}
     <h1>Contact Me</h1>
     <div class="container">
         <form action="https://www.linkedin.com/in/naor-pinto-179a5b1a6/">

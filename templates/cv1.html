@@ -10,6 +10,9 @@
 </head>
 <body>
 {% include 'header.html' %}
+        {% if session.username%}
+            <h2> Welcome Back,{{session.nickname}}</h2>
+        {% endif %}
     <div id="GridContainer">
         <div id="header"> <br> Naor Pinto <br> 052-6265680 | naorpinto6@gmail.com | Herzliya </div>
         <div id="subtitle1">PROFILE</div>
@@ -45,3 +48,4 @@
     </div>
 </body>
 </html>
+
