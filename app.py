@@ -1,11 +1,14 @@
+import app as app
 from flask import Flask, redirect, url_for
 from flask import render_template
 from flask import request
 from flask import session
+from interact_with_DB import interact_db
 
 
 app = Flask(__name__)
-app.secret_key='123'
+app.secret_key = '123'
+
 
 
 @app.route('/')
@@ -51,7 +54,7 @@ def assignment9_func():
                                    users={'user1': {'nickname': 'naor24', 'name': 'Naor', 'email': 'naor@gmail.com'},
                                           'user2': {'nickname': 'noam28', 'name': 'Noam', 'email': 'noam@gmail.com'},
                                           'user3': {'nickname': 'kobe8', 'name': 'Kobe', 'email': 'kobe@gmail.com'},
-                                          'user4': {'nickname': 'ariel1','name': 'Ariel', 'email': 'ariel@gmail.com'},
+                                          'user4': {'nickname': 'ariel1', 'name': 'Ariel', 'email': 'ariel@gmail.com'},
                                           'user5': {'nickname': 'amit14', 'name': 'Amit', 'email': 'amit@gmail.com'}})
         return render_template('assignment9.html')
 
@@ -67,6 +70,43 @@ def assignment9_func():
 def logout_func():
     session['username'] = ''
     return redirect(url_for('assignment9_func'))
+
+
+# assignment10
+from pages.assignment10.assignment10 import assignment10
+app.register_blueprint(assignment10)
+
+
+@app.route('/insert_user', methods=['POST'])
+def insert_user_func():
+    #get the data
+    nickname = request.form['nickname']
+    name = request.form['name']
+    email = request.form['email']
+
+    #insert to DB
+    query = "INSERT INTO users(nickname, name, email) VALUES ('%s','%s','%s');" % (nickname, name, email)
+    interact_db(query=query, query_type='commit')
+
+    #come back to assignment10
+    return redirect('/assignment10')
+
+
+@app.route('/delete_user', methods=['POST'])
+def delete_user_func():
+    user_nickname = request.form['D_nickname']
+    query = "DELETE FROM users WHERE nickname='%s';" % user_nickname
+    interact_db(query=query, query_type='commit')
+    return redirect('/assignment10')
+
+
+@app.route('/update_user', methods=['POST'])
+def update_user_func():
+    u_nickname = request.form['user_nickname']
+    new_email = request.form['user_email']
+    query = "UPDATE users SET email='%s' WHERE nickname='%s';" % (new_email, u_nickname)
+    interact_db(query=query, query_type='commit')
+    return redirect('/assignment10')
 
 
 if __name__ == '__main__':
