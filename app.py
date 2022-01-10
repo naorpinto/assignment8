@@ -3,12 +3,14 @@ from flask import Flask, redirect, url_for
 from flask import render_template
 from flask import request
 from flask import session
+from flask import jsonify
+import requests
+import random
 from interact_with_DB import interact_db
 
 
 app = Flask(__name__)
 app.secret_key = '123'
-
 
 
 @app.route('/')
@@ -107,6 +109,29 @@ def update_user_func():
     query = "UPDATE users SET email='%s' WHERE nickname='%s';" % (new_email, u_nickname)
     interact_db(query=query, query_type='commit')
     return redirect('/assignment10')
+
+
+@app.route('/assignment11/users')
+def assignment11_users_func():
+    query = ' select * from users;'
+    users = interact_db(query=query, query_type='fetch')
+    response = jsonify(users)
+    return response
+
+
+def get_user(user_num):
+    res = requests.get(f'https://reqres.in/api/users/{user_num}')
+    res = res.json()
+    return res
+
+
+@app.route('/assignment11/outer_source')
+def assignment11_outer_source_func():
+    user_num = 3
+    if "number" in request.args:
+        user_num = int(request.args['number'])
+    the_user = get_user(user_num)
+    return render_template('assignment11_outerSource.html', User=the_user)
 
 
 if __name__ == '__main__':
