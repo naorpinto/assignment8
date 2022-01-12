@@ -1,30 +1,34 @@
 
 function getUsers(){
-    fetch('https://reqres.in/api/users/').then(
+    var id_userInput = document.getElementById('id').value;
+    fetch(`https://reqres.in/api/users/${id_userInput}`).then
+    (
         response => response.json()
-    ).then(
+    ).then
+    (
         response_obj => put_users_html(response_obj.data)
-    ).catch(
+    ).catch
+    (
         err=>console.log(err)
     )
-
 }
 
 function put_users_html(response_obj_data) {
     console.log(response_obj_data);
-    let id=document.getElementById('id').value;
-    let userID=parseInt(id);
-    console.log(userID);
     const curr_main = document.querySelector("main");
-    let user = Object.values(response_obj_data).find(obj=>obj.id === userID);
+      while (curr_main.firstChild) {
+        curr_main.removeChild(curr_main.lastChild);}
     const section = document.createElement('section');
             section.innerHTML = `
-        <img src="${user.avatar}" alt="Profile Picture"/>
+        <img src="${response_obj_data.avatar}" alt="Profile Picture"/>
         <div>
-               <span>${user.first_name} ${user.last_name}</span>
+               <span>${response_obj_data.first_name} ${response_obj_data.last_name}</span>
                <br>
-               <a href="mailto:${user.email}"> Send Email</a>
+               <a href="mailto:${response_obj_data.email}"> Send Email</a>
         </div>
         `;
             curr_main.appendChild(section);
 }
+
+
+
