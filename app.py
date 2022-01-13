@@ -5,7 +5,6 @@ from flask import request
 from flask import session
 from flask import jsonify
 import requests
-import random
 from interact_with_DB import interact_db
 
 
@@ -132,6 +131,19 @@ def assignment11_outer_source_func():
         user_num = int(request.args['number'])
     the_user = get_user(user_num)
     return render_template('assignment11_outerSource.html', User=the_user)
+
+
+@app.route('/assignment12/restapi_users', defaults={'user_id': 5})
+@app.route('/assignment12/restapi_users/<int:user_id>')
+def assignment12_func(user_id):
+    query = ' select * from users where id=%s;' % user_id
+    user = interact_db(query=query, query_type='fetch')
+    if len(user) == 0:
+        return_dic = { 'status': 'Failed', 'message': 'This  was not found'}
+    else:
+        return_dic = {'status': 'Success', 'id': user[0].id, 'name': user[0].name, 'email': user[0].email,
+                       'nickname': user[0].nickname}
+    return jsonify(return_dic)
 
 
 if __name__ == '__main__':
